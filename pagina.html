@@ -1,0 +1,99 @@
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomas Jaramillo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Constelaciones.js" defer></script>
+    <script src="Pagina.js" defer></script>
+  </head>
+  <body>
+    <h2>Bienvenido a mi página</h2>
+    <p class="instrucciones-cielo">Cada estrella guarda el eco de una historia que aún no se ha contado.</p>
+
+    <section class="mapa-celeste" aria-labelledby="titulo-mapa">
+      <header class="encabezado-mapa">
+        <p class="sobrelinea-mapa">Atlas celeste · 88 constelaciones</p>
+        <h3 id="titulo-mapa">Donde comienza la noche</h3>
+      </header>
+      <form id="busqueda-celeste" class="busqueda-celeste" role="search">
+        <label for="buscar-estrella">Buscar una estrella, constelación o personaje</label>
+        <div class="entrada-busqueda">
+          <input id="buscar-estrella" name="q" type="search" placeholder="Ej.: Betelgeuse, Orión, Tomás..." autocomplete="off" aria-describedby="resultado-busqueda">
+          <button type="submit">Buscar</button>
+        </div>
+        <p id="resultado-busqueda" class="resultado-busqueda" role="status" aria-live="polite"></p>
+        <ul id="sugerencias-celestes" class="sugerencias-celestes" aria-label="Resultados de búsqueda"></ul>
+      </form>
+      <div class="controles-mapa" role="group" aria-label="Controles del mapa">
+        <button type="button" id="acercar-mapa" aria-label="Acercar el mapa">+</button>
+        <button type="button" id="alejar-mapa" aria-label="Alejar el mapa">−</button>
+        <button type="button" id="centrar-mapa">Ver cielo completo</button>
+        <span>Arrastra el cielo para desplazarte · Usa la rueda o los botones para acercar</span>
+      </div>
+      <figure class="figura-mapa">
+        <svg id="mapa-estelar" viewBox="0 0 1440 700" role="group" aria-labelledby="titulo-svg-mapa descripcion-svg-mapa">
+          <title id="titulo-svg-mapa">Mapa de las 88 constelaciones</title>
+          <desc id="descripcion-svg-mapa">Proyección celeste con estrellas coloreadas según su índice de color y trazos de las constelaciones.</desc>
+        </svg>
+        <figcaption id="coordenadas-mapa">Ascensión recta · Declinación celeste · Coordenadas aproximadas (J2000)</figcaption>
+      </figure>
+      <section class="detalle-celeste" id="detalle-celeste" aria-live="polite" aria-label="Datos de la selección">
+        <p class="sobrelinea-mapa">Coordenadas y composición</p>
+        <h4 id="nombre-detalle">El firmamento guarda sus secretos</h4>
+        <p class="ubicacion-detalle" id="ubicacion-detalle">Cada punto luminoso pertenece a un lugar preciso del cielo.</p>
+        <ul class="estrellas-detalle" id="estrellas-detalle"></ul>
+      </section>
+    </section>
+    
+    <img class="portada-principal" src="portada cap 8.png" alt="Portada ilustrada de Tomás Jaramillo" decoding="async">
+
+    <p class="novela" title="Pasa el cursor para descubrir el código">
+      <span class="novela-text">TVoid una novela creada por mí.</span>
+      <span class="codigo-secreto">Código para archivo secreto: 2008</span>
+    </p>
+
+    <main class="historia">
+      <section>
+        <h3>Información básica de la historia</h3>
+        <p>La historia comenzó entre marzo y abril del año 2033.</p>
+      </section>
+
+      <section>
+        <h3>Protagonistas principales</h3>
+        <ul>
+          <li>Tomás Jaramillo Cortes</li>
+          <li>Donny Samuel Valencia</li>
+          <li>Juan Jose Gomez</li>
+          <li>Samuel Perafan</li>
+          <li>Catalina</li>
+          <li>Tobbycraft</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Personajes secundarios</h3>
+        <ul>
+          <li>Henry</li>
+          <li>Tomás Demon</li>
+          <li>Marin</li>
+          <li>Hats</li>
+          <li>Pleyades Astreal</li>
+          <li>Orst</li>
+          <li>El demonio de la gema de Tomás Demon</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Personajes aún no aparecidos en el primer tomo</h3>
+        <p>En esta sección se agregarán aproximadamente entre 5 y 10 personajes.</p>
+      </section>
+
+      <section>
+        <h3>Personajes faltantes de los próximos tomos</h3>
+        <p>Se agregarán 50 personajes en los próximos tomos.</p>
+      </section>
+    </main>
+  </body>
+</html>

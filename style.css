@@ -1,0 +1,757 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.pagina-mantenimiento {
+	justify-content: center;
+	padding: 24px;
+	background-image:
+		radial-gradient(2px 2px at 12% 18%, #ffffff 99%, transparent),
+		radial-gradient(1px 1px at 82% 37%, #cce6ff 99%, transparent),
+		radial-gradient(1px 1px at 67% 83%, #ffffff 99%, transparent);
+	background-size: 230px 190px, 310px 260px, 270px 230px;
+}
+
+.ficha-mantenimiento {
+	width: min(100%, 620px);
+	padding: clamp(24px, 6vw, 52px) 20px;
+	text-align: center;
+}
+
+.ficha-mantenimiento .sobrelinea-mapa {
+	margin-bottom: 18px;
+}
+
+.ficha-mantenimiento h1 {
+	margin: 0 0 18px;
+	color: #e8dfff;
+	font-size: clamp(1rem, 4vw, 1.6rem);
+	line-height: 1.8;
+	text-shadow: 0 0 25px rgba(179, 162, 255, 0.5);
+}
+
+.ficha-mantenimiento p:not(.sobrelinea-mapa) {
+	color: #d1d9f3;
+	font-family: 'Courier New', monospace;
+	font-size: 1rem;
+	line-height: 1.8;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	position: relative;
+	isolation: isolate;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 24px;
+	padding: 42px 24px 64px;
+	background: linear-gradient(150deg, #070b1c 0%, #10112b 47%, #101a36 100%);
+	color: #ffffff;
+	font-family: 'Press Start 2P', 'Courier New', monospace;
+	text-align: center;
+}
+
+body::before {
+	position: fixed;
+	z-index: -1;
+	inset: 0;
+	background-image:
+		radial-gradient(1.5px 1.5px at 12% 18%, #ffffff 98%, transparent),
+		radial-gradient(1px 1px at 82% 37%, #d7e3ff 98%, transparent),
+		radial-gradient(1px 1px at 67% 83%, #ffffff 98%, transparent),
+		radial-gradient(1px 1px at 38% 72%, #e9dfff 98%, transparent);
+	background-size: 230px 190px, 310px 260px, 270px 230px, 350px 300px;
+	content: "";
+	opacity: 0.45;
+	pointer-events: none;
+	transition: opacity 900ms ease, background-position 1800ms ease, filter 1200ms ease;
+}
+
+body.cielo-abriendo::before {
+	background-position: 24px -30px, -18px 26px, 35px 14px, -28px -20px;
+	filter: hue-rotate(25deg);
+	opacity: 0.75;
+}
+
+body > :not(.mapa-celeste) {
+	position: relative;
+	z-index: 1;
+}
+
+.mapa-celeste {
+	width: min(100%, 1440px);
+	padding: 0;
+}
+
+body.cielo-abriendo .mapa-celeste {
+	filter: saturate(0.8);
+}
+
+.encabezado-mapa {
+	margin-bottom: 22px;
+}
+
+.sobrelinea-mapa {
+	margin: 0;
+	color: #aeb9f7;
+	font-family: 'Courier New', monospace;
+	font-size: 0.8rem;
+	letter-spacing: 0.2em;
+	line-height: 1.6;
+	text-transform: uppercase;
+}
+
+.encabezado-mapa h3 {
+	margin: 10px 0 0;
+	color: #f0e9ff;
+	font-size: clamp(0.85rem, 2vw, 1.2rem);
+	line-height: 1.7;
+	text-shadow: 0 0 22px rgba(179, 162, 255, 0.55);
+}
+
+.busqueda-celeste {
+	width: min(100%, 720px);
+	margin: 0 auto 18px;
+	text-align: left;
+}
+
+.busqueda-celeste label {
+	display: block;
+	margin-bottom: 8px;
+	color: #b8c5ed;
+	font-family: 'Courier New', monospace;
+	font-size: 0.95rem;
+}
+
+.entrada-busqueda {
+	display: flex;
+	gap: 8px;
+}
+
+.entrada-busqueda input {
+	width: 100%;
+	min-width: 0;
+	padding: 13px 15px;
+	border: 1px solid rgba(151, 169, 255, 0.5);
+	border-radius: 8px;
+	background: rgba(8, 13, 37, 0.92);
+	color: #f1f3ff;
+	font-family: 'Courier New', monospace;
+	font-size: 1rem;
+}
+
+.entrada-busqueda input::placeholder {
+	color: #8793bd;
+}
+
+.entrada-busqueda input:focus-visible,
+.entrada-busqueda button:focus-visible,
+.controles-mapa button:focus-visible,
+.sugerencias-celestes button:focus-visible {
+	outline: 2px solid #c5b0ff;
+	outline-offset: 3px;
+}
+
+.entrada-busqueda button,
+.controles-mapa button {
+	min-height: 44px;
+	padding: 10px 16px;
+	border: 1px solid rgba(164, 173, 255, 0.58);
+	border-radius: 8px;
+	background: linear-gradient(135deg, rgba(76, 66, 145, 0.88), rgba(34, 64, 111, 0.94));
+	color: #f2edff;
+	font-family: 'Courier New', monospace;
+	font-size: 0.95rem;
+	cursor: pointer;
+}
+
+.entrada-busqueda button:hover,
+.controles-mapa button:hover {
+	background: linear-gradient(135deg, rgba(111, 85, 177, 0.98), rgba(45, 92, 145, 0.98));
+}
+
+.resultado-busqueda {
+	min-height: 1.4em;
+	margin: 7px 0 0;
+	color: #c5d4f5;
+	font-family: 'Courier New', monospace;
+	font-size: 0.92rem;
+	line-height: 1.5;
+}
+
+.sugerencias-celestes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sugerencias-celestes:empty {
+	display: none;
+}
+
+.sugerencias-celestes button {
+	padding: 6px 9px;
+	border: 1px solid rgba(139, 161, 242, 0.28);
+	border-radius: 6px;
+	background: rgba(14, 22, 51, 0.76);
+	color: #d9e2ff;
+	font-family: 'Courier New', monospace;
+	font-size: 0.83rem;
+	cursor: pointer;
+}
+
+.sugerencias-celestes button:hover {
+	border-color: #c1acff;
+	color: #ffffff;
+}
+
+.secreto-encontrado {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: 8px;
+	color: #f5dcff;
+}
+
+.secreto-encontrado a {
+	color: #d0c2ff;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.secreto-encontrado a:hover,
+.secreto-encontrado a:focus-visible {
+	color: #ffffff;
+}
+
+.controles-mapa {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 10px;
+}
+
+.controles-mapa button {
+	min-width: 44px;
+	min-height: 42px;
+	padding: 8px 13px;
+}
+
+.controles-mapa button:first-child,
+.controles-mapa button:nth-child(2) {
+	font-size: 1.3rem;
+}
+
+.controles-mapa span {
+	width: 100%;
+	color: #aab7dd;
+	font-family: 'Courier New', monospace;
+	font-size: 0.82rem;
+}
+
+.figura-mapa {
+	margin: 0;
+	background:
+		radial-gradient(ellipse at 48% 45%, rgba(45, 70, 130, 0.28), transparent 72%),
+		linear-gradient(150deg, rgba(5, 10, 30, 0.98), rgba(14, 15, 42, 0.99) 60%, rgba(12, 26, 50, 0.98));
+}
+
+#mapa-estelar {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	touch-action: none;
+	cursor: grab;
+	user-select: none;
+}
+
+#mapa-estelar.arrastrando {
+	cursor: grabbing;
+}
+
+.estrellas-fondo circle {
+	cursor: crosshair;
+	opacity: var(--luminosidad);
+	transition: opacity 220ms ease;
+}
+
+.estrellas-fondo circle:hover,
+.estrellas-fondo circle:focus-visible {
+	opacity: 1;
+	filter: drop-shadow(0 0 5px currentColor);
+}
+
+.lineas-constelacion {
+	fill: none;
+	stroke: rgba(144, 171, 255, 0.34);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.1;
+	vector-effect: non-scaling-stroke;
+	transition: stroke 240ms ease, stroke-width 240ms ease, opacity 240ms ease;
+}
+
+.constelacion-mapa {
+	cursor: pointer;
+	outline: none;
+}
+
+.constelacion-mapa:hover .lineas-constelacion,
+.constelacion-mapa:focus .lineas-constelacion,
+.constelacion-mapa.seleccionada .lineas-constelacion {
+	stroke: rgba(192, 194, 255, 0.78);
+	stroke-width: 1.7;
+}
+
+.nombre-constelacion-mapa {
+	fill: rgba(188, 202, 255, 0.7);
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	paint-order: stroke;
+	stroke: #11132b;
+	stroke-linejoin: round;
+	stroke-width: 2px;
+	pointer-events: none;
+	display: none;
+}
+
+.estrella-destacada-mapa {
+	cursor: pointer;
+}
+
+.objetivo-tactil {
+	fill: transparent;
+	stroke: none;
+	pointer-events: all;
+	animation: none !important;
+	filter: none !important;
+}
+
+.estrella-destacada-mapa circle.objetivo-tactil {
+	stroke: none;
+}
+
+.estrella-destacada-mapa circle {
+	stroke: rgba(255, 255, 255, 0.76);
+	stroke-width: 0.55;
+	filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 8px currentColor);
+	animation: pulso-celeste 2.8s ease-in-out infinite alternate;
+}
+
+.estrella-destacada-mapa:nth-of-type(3n) circle {
+	animation-delay: -1.5s;
+}
+
+.nombre-estrella-mapa,
+.estrella-destacada-mapa text {
+	fill: #eff3ff;
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	font-weight: 600;
+	paint-order: stroke;
+	stroke: #0d1128;
+	stroke-linejoin: round;
+	stroke-width: 2.8px;
+	pointer-events: none;
+	display: none;
+}
+
+.mapa-ampliado .nombre-constelacion-mapa,
+.mapa-detallado .nombre-estrella-mapa {
+	display: inline;
+}
+
+.constelacion-mapa.seleccionada .nombre-constelacion-mapa,
+.constelacion-mapa.seleccionada .nombre-estrella-mapa:not(.nombre-estrella-personaje) {
+	display: inline;
+}
+
+.nombre-estrella-personaje {
+	display: inline;
+	fill: #fff4bc;
+	font-weight: 700;
+}
+
+.estrella-destacada-mapa a {
+	outline: none;
+}
+
+.estrella-destacada-mapa:focus circle,
+.estrella-destacada-mapa:hover circle {
+	stroke: #ffffff;
+	stroke-width: 1.4;
+	filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 13px currentColor);
+}
+
+.figura-mapa figcaption {
+	padding: 10px 4px 12px;
+	color: #9ba9d8;
+	font-family: 'Courier New', monospace;
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+}
+
+.detalle-celeste {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+	align-items: center;
+	gap: 4px 20px;
+	margin-top: 10px;
+	padding: 12px 4px;
+	text-align: left;
+}
+
+.detalle-celeste .sobrelinea-mapa,
+.detalle-celeste h4,
+.detalle-celeste .ubicacion-detalle {
+	grid-column: 1;
+}
+
+.detalle-celeste h4 {
+	margin: 2px 0 0;
+	color: #f4eaff;
+	font-size: clamp(0.7rem, 1.2vw, 0.92rem);
+	line-height: 1.7;
+}
+
+.ubicacion-detalle {
+	margin: 0;
+	color: #b8c8eb;
+	font-family: 'Courier New', monospace;
+	font-size: 0.9rem;
+	line-height: 1.6;
+}
+
+.estrellas-detalle {
+	grid-column: 2;
+	grid-row: 1 / span 3;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.estrellas-detalle li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 2px 0;
+	color: #e6ebff;
+	font-family: 'Courier New', monospace;
+	font-size: 0.82rem;
+	line-height: 1.35;
+}
+
+.muestra-color {
+	width: 8px;
+	height: 8px;
+	flex: 0 0 auto;
+	border-radius: 50%;
+	box-shadow: 0 0 8px currentColor;
+}
+
+.instrucciones-cielo {
+	width: min(100%, 900px);
+	margin: -12px 0 0;
+	color: #c9c5ee;
+	font-family: 'Courier New', monospace;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+@keyframes pulso-celeste {
+	from { opacity: 0.72; }
+	to { opacity: 1; }
+}
+
+h2 {
+	margin: 0;
+	color: #c9c2ff;
+	font-size: clamp(1rem, 3vw, 1.5rem);
+	line-height: 1.6;
+	text-shadow: 0 0 20px rgba(156, 145, 255, 0.48);
+}
+
+img {
+	width: auto;
+	max-width: min(100%, 1200px);
+	height: auto;
+	display: block;
+}
+
+.portada-principal {
+	width: min(100%, 640px);
+	max-width: 640px;
+	height: auto;
+	object-fit: contain;
+	transition: filter 180ms ease, transform 700ms ease;
+}
+
+body.cielo-abriendo .portada-principal {
+	transform: translateY(-6px);
+}
+
+.novela {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: #ffffff;
+	font-family: inherit;
+	font-size: clamp(0.7rem, 2vw, 1rem);
+	line-height: 1.8;
+	cursor: pointer;
+}
+
+.codigo-secreto {
+	display: none;
+	color: #e3bfff;
+}
+
+.novela.codigo-visible .novela-text {
+	display: none;
+}
+
+.novela.codigo-visible .codigo-secreto {
+	display: inline;
+}
+
+.novela:focus-visible {
+	outline: 2px solid #aeb9ff;
+	outline-offset: 6px;
+}
+
+.mensaje-eventos {
+	min-height: 1.5em;
+	margin: -12px 0 0;
+	color: #b8d8b8;
+	font-family: 'Courier New', monospace;
+	font-size: 0.95rem;
+}
+
+img {
+	transition: filter 180ms ease;
+}
+
+img.imagen-enfocada {
+	filter: brightness(1.2) contrast(1.08);
+}
+
+.historia {
+	width: min(100%, 900px);
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 20px;
+	text-align: left;
+}
+
+.historia section {
+	padding: 24px;
+	border: 1px solid rgba(120, 151, 232, 0.48);
+	background-color: rgba(12, 17, 39, 0.9);
+	transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.historia section.seccion-activa {
+	border-color: #baa5ff;
+	background-color: rgba(29, 25, 61, 0.96);
+}
+
+.historia section:first-child {
+	grid-column: 1 / -1;
+}
+
+h3 {
+	margin: 0 0 16px;
+	color: #c3bcff;
+	font-size: clamp(0.75rem, 2vw, 1rem);
+	line-height: 1.6;
+}
+
+.historia p,
+.historia li {
+	font-family: 'Courier New', monospace;
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+.historia p {
+	margin: 0;
+}
+
+.historia ul {
+	margin: 0;
+	padding-left: 24px;
+}
+
+@media (max-width: 700px) {
+	body {
+		padding: 24px 12px 42px;
+	}
+
+	.encabezado-mapa h3 {
+		font-size: 0.8rem;
+	}
+
+	.instrucciones-cielo {
+		font-size: 0.9rem;
+	}
+
+	.entrada-busqueda {
+		gap: 6px;
+	}
+
+	.entrada-busqueda input {
+		padding: 12px 10px;
+		font-size: 0.92rem;
+	}
+
+	.entrada-busqueda button {
+		padding: 8px 11px;
+	}
+
+	.controles-mapa span {
+		max-width: 34ch;
+		line-height: 1.5;
+	}
+
+	.detalle-celeste {
+		grid-template-columns: 1fr;
+		gap: 8px;
+		padding: 10px 4px;
+	}
+
+	.detalle-celeste .sobrelinea-mapa,
+	.detalle-celeste h4,
+	.detalle-celeste .ubicacion-detalle,
+	.estrellas-detalle {
+		grid-column: 1;
+		grid-row: auto;
+	}
+
+	.estrellas-detalle li {
+		font-size: 0.76rem;
+	}
+
+	.figura-mapa figcaption {
+		font-size: 0.68rem;
+		line-height: 1.5;
+	}
+
+	.nombre-constelacion-mapa,
+	.nombre-estrella-mapa,
+	.estrella-destacada-mapa text {
+		font-size: 16px;
+	}
+
+	.historia {
+		grid-template-columns: 1fr;
+	}
+
+	.historia section:first-child {
+		grid-column: auto;
+	}
+}
+
+.pagina-personaje {
+	justify-content: center;
+	padding: 32px 20px;
+	background-image:
+		radial-gradient(2px 2px at 12% 18%, #ffffff 99%, transparent),
+		radial-gradient(1px 1px at 82% 37%, #cce6ff 99%, transparent),
+		radial-gradient(1px 1px at 67% 83%, #ffffff 99%, transparent);
+	background-size: 230px 190px, 310px 260px, 270px 230px;
+}
+
+.pagina-personaje::before {
+	position: fixed;
+	z-index: -1;
+	inset: 0;
+	background: radial-gradient(ellipse at center, rgba(13, 40, 64, 0.68), transparent 70%);
+	content: "";
+	pointer-events: none;
+}
+
+.ficha-personaje {
+	width: min(100%, 720px);
+	padding: clamp(24px, 6vw, 52px);
+	border: 1px solid rgba(125, 194, 255, 0.52);
+	border-radius: 16px;
+	background: rgba(5, 12, 28, 0.88);
+	box-shadow: 0 0 50px rgba(42, 135, 219, 0.22);
+}
+
+.ficha-personaje .etiqueta {
+	margin: 0 0 18px;
+	color: #95cbff;
+	font-family: 'Courier New', monospace;
+	font-size: 0.95rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.ficha-personaje h1 {
+	margin: 0 0 18px;
+	color: #fff2ad;
+	font-size: clamp(1.15rem, 4vw, 2rem);
+	line-height: 1.7;
+}
+
+.ficha-personaje .estrella-destacada {
+	margin: 0 0 26px;
+	color: #d9edff;
+	font-family: 'Courier New', monospace;
+	font-size: clamp(1.1rem, 3vw, 1.45rem);
+}
+
+.ficha-personaje .descripcion-personaje {
+	margin: 0;
+	color: #e0e8f4;
+	font-family: 'Courier New', monospace;
+	font-size: 1.05rem;
+	line-height: 1.8;
+}
+
+.volver-inicio {
+	display: inline-block;
+	margin-top: 30px;
+	padding: 12px 16px;
+	border: 1px solid #7dc2ff;
+	border-radius: 6px;
+	color: #d9edff;
+	font-family: 'Courier New', monospace;
+	font-size: 1rem;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.volver-inicio:hover,
+.volver-inicio:focus-visible {
+	background: #d9edff;
+	color: #071223;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}
